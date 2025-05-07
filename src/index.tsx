@@ -1,15 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// src/index.tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { store } from "./store/store"; // Import the configured store
+import App from "./App"; // Import the main App component
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+// Import global styles
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS FIRST
+import "./index.css"; // Import custom global styles (optional)
+
+// Find the root DOM element
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Failed to find the root element");
+
+// Create a React root
+const root = ReactDOM.createRoot(rootElement);
+
+// Render the application
 root.render(
   <React.StrictMode>
-    <App />
+    {/* Wrap the entire App with the Redux Provider */}
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

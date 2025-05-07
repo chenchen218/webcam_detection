@@ -1,0 +1,53 @@
+/* src/components/WebcamFeed.css */
+.webcam-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Wrapper to control the size and positioning */
+.video-canvas-wrapper {
+  position: relative; /* Needed for absolute positioning of overlays */
+  width: 100%;
+  max-width: 640px; /* Example max width, adjust as needed */
+  margin: 0 auto; /* Center the wrapper */
+  background-color: #ddd; /* Placeholder background */
+  aspect-ratio: 4 / 3; /* Default aspect ratio, adjust if needed or make dynamic */
+  overflow: hidden; /* Hide parts of video/canvas that might overflow */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Optional rounded corners */
+}
+
+/* The canvas where the video and boxes are drawn */
+.overlay-canvas {
+  display: block; /* Remove extra space below canvas */
+  position: absolute; /* Position relative to wrapper */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make canvas fill the wrapper */
+  height: 100%; /* Make canvas fill the wrapper */
+}
+
+/* Optional: Style for loading overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  z-index: 10; /* Ensure it's above the canvas */
+  border-radius: 4px;
+}
+
+/* Hide the original video element completely */
+.video-canvas-wrapper video {
+  display: none;
+}
